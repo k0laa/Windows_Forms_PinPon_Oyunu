@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             game_panel = new Panel();
+            start_btn = new Button();
             score_lbl = new Label();
             scoreText_lbl = new Label();
             ball = new PictureBox();
@@ -48,6 +49,7 @@
             // game_panel
             // 
             game_panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            game_panel.Controls.Add(start_btn);
             game_panel.Controls.Add(score_lbl);
             game_panel.Controls.Add(scoreText_lbl);
             game_panel.Controls.Add(ball);
@@ -58,6 +60,18 @@
             game_panel.Name = "game_panel";
             game_panel.Size = new Size(800, 450);
             game_panel.TabIndex = 0;
+            // 
+            // start_btn
+            // 
+            start_btn.BackColor = Color.DarkSeaGreen;
+            start_btn.Font = new Font("Segoe UI", 25F);
+            start_btn.Location = new Point(268, 305);
+            start_btn.Name = "start_btn";
+            start_btn.Size = new Size(300, 85);
+            start_btn.TabIndex = 5;
+            start_btn.Text = "Başla";
+            start_btn.UseVisualStyleBackColor = false;
+            start_btn.Click += start_btn_Click;
             // 
             // score_lbl
             // 
@@ -95,7 +109,7 @@
             gameOver_panel.Controls.Add(exit_btn);
             gameOver_panel.Controls.Add(gameOver_lbl);
             gameOver_panel.Controls.Add(restart_btn);
-            gameOver_panel.Location = new Point(135, 101);
+            gameOver_panel.Location = new Point(288, 12);
             gameOver_panel.Name = "gameOver_panel";
             gameOver_panel.Size = new Size(500, 250);
             gameOver_panel.TabIndex = 2;
@@ -180,5 +194,6 @@
         private Label score_lbl;
         private Label scoreText_lbl;
         private Label gameOver_lbl;
+        private Button start_btn;
     }
 }

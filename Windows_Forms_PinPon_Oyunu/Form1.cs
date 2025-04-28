@@ -12,17 +12,19 @@ namespace Windows_Forms_PinPon_Oyunu
             InitializeComponent();
 
             Bounds = Screen.PrimaryScreen.Bounds;
+            ball.Visible = false;
 
             table.Top = game_panel.Bottom - game_panel.Bottom / 10;
             table.Left = game_panel.Left + game_panel.Width / 2 - table.Width / 2;
+
+            start_btn.Top = game_panel.Bottom / 2 - start_btn.Height / 2;
+            start_btn.Left = game_panel.Right / 2 - start_btn.Width / 2;
 
             gameOver_panel.Top = game_panel.Bottom / 2 - gameOver_panel.Height / 2;
             gameOver_panel.Left = game_panel.Right / 2 - gameOver_panel.Width / 2;
             gameOver_panel.Visible = false;
             gameOver_panel.Enabled = false;
 
-            timer1.Enabled = true;
-            Cursor.Hide();
         }
 
 
@@ -100,6 +102,15 @@ namespace Windows_Forms_PinPon_Oyunu
                 Application.Exit();
             }
 
+        }
+
+        private void start_btn_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+            ball.Visible = true;
+            Cursor.Hide();
+            start_btn.Enabled = false;
+            start_btn.Visible = false;
         }
     }
 }
