@@ -1,6 +1,6 @@
 ﻿namespace Windows_Forms_PinPon_Oyunu
 {
-    partial class Form1
+    partial class gameForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,10 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             game_panel = new Panel();
+            score_lbl = new Label();
+            scoreText_lbl = new Label();
             pictureBox1 = new PictureBox();
             gameOver_panel = new GroupBox();
             exit_btn = new Button();
-            label1 = new Label();
+            gameOver_lbl = new Label();
             restart_btn = new Button();
             table = new PictureBox();
             timer1 = new System.Windows.Forms.Timer(components);
@@ -46,6 +48,8 @@
             // game_panel
             // 
             game_panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            game_panel.Controls.Add(score_lbl);
+            game_panel.Controls.Add(scoreText_lbl);
             game_panel.Controls.Add(pictureBox1);
             game_panel.Controls.Add(gameOver_panel);
             game_panel.Controls.Add(table);
@@ -55,6 +59,26 @@
             game_panel.Size = new Size(800, 450);
             game_panel.TabIndex = 0;
             game_panel.Paint += game_panel_Paint;
+            // 
+            // score_lbl
+            // 
+            score_lbl.AutoSize = true;
+            score_lbl.Font = new Font("Segoe UI", 15F);
+            score_lbl.Location = new Point(107, 9);
+            score_lbl.Name = "score_lbl";
+            score_lbl.Size = new Size(28, 35);
+            score_lbl.TabIndex = 5;
+            score_lbl.Text = "0";
+            // 
+            // scoreText_lbl
+            // 
+            scoreText_lbl.AutoSize = true;
+            scoreText_lbl.Font = new Font("Segoe UI", 15F);
+            scoreText_lbl.Location = new Point(12, 9);
+            scoreText_lbl.Name = "scoreText_lbl";
+            scoreText_lbl.Size = new Size(89, 35);
+            scoreText_lbl.TabIndex = 4;
+            scoreText_lbl.Text = "Score :";
             // 
             // pictureBox1
             // 
@@ -67,15 +91,16 @@
             // 
             // gameOver_panel
             // 
+            gameOver_panel.BackColor = Color.Transparent;
+            gameOver_panel.BackgroundImageLayout = ImageLayout.None;
             gameOver_panel.Controls.Add(exit_btn);
-            gameOver_panel.Controls.Add(label1);
+            gameOver_panel.Controls.Add(gameOver_lbl);
             gameOver_panel.Controls.Add(restart_btn);
             gameOver_panel.Location = new Point(135, 101);
             gameOver_panel.Name = "gameOver_panel";
             gameOver_panel.Size = new Size(500, 250);
             gameOver_panel.TabIndex = 2;
             gameOver_panel.TabStop = false;
-            gameOver_panel.Text = "groupBox1";
             // 
             // exit_btn
             // 
@@ -89,15 +114,15 @@
             exit_btn.UseVisualStyleBackColor = false;
             exit_btn.Click += button1_Click;
             // 
-            // label1
+            // gameOver_lbl
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 40F);
-            label1.Location = new Point(98, 23);
-            label1.Name = "label1";
-            label1.Size = new Size(317, 89);
-            label1.TabIndex = 3;
-            label1.Text = "Kaybettin";
+            gameOver_lbl.AutoSize = true;
+            gameOver_lbl.Font = new Font("Segoe UI", 40F);
+            gameOver_lbl.Location = new Point(98, 23);
+            gameOver_lbl.Name = "gameOver_lbl";
+            gameOver_lbl.Size = new Size(317, 89);
+            gameOver_lbl.TabIndex = 3;
+            gameOver_lbl.Text = "Kaybettin";
             // 
             // restart_btn
             // 
@@ -119,17 +144,18 @@
             table.TabIndex = 0;
             table.TabStop = false;
             // 
-            // Form1
+            // gameForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(game_panel);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form1";
-            Text = "Form1";
+            Name = "gameForm";
+            Text = "Pin Pon Oyunu";
             WindowState = FormWindowState.Maximized;
             game_panel.ResumeLayout(false);
+            game_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             gameOver_panel.ResumeLayout(false);
             gameOver_panel.PerformLayout();
@@ -143,9 +169,11 @@
         private PictureBox table;
         private GroupBox gameOver_panel;
         private Button exit_btn;
-        private Label label1;
         private Button restart_btn;
         private PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
+        private Label score_lbl;
+        private Label scoreText_lbl;
+        private Label gameOver_lbl;
     }
 }
