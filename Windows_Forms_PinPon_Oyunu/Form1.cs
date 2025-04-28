@@ -6,5 +6,15 @@ namespace Windows_Forms_PinPon_Oyunu
         {
             InitializeComponent();
         }
+
+        private void game_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
