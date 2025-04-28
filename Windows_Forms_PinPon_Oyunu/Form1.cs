@@ -1,3 +1,5 @@
+using System;
+
 namespace Windows_Forms_PinPon_Oyunu
 {
     public partial class gameForm : Form
@@ -8,6 +10,7 @@ namespace Windows_Forms_PinPon_Oyunu
         public gameForm()
         {
             InitializeComponent();
+
             Bounds = Screen.PrimaryScreen.Bounds;
 
             table.Top = game_panel.Bottom - game_panel.Bottom / 10;
@@ -33,36 +36,70 @@ namespace Windows_Forms_PinPon_Oyunu
             if (ball.Left <= game_panel.Left)
             {
                 speed_left = -speed_left;
+                Random random = new Random();
+                game_panel.BackColor = Color.FromArgb(random.Next(150, 255), random.Next(150, 255), random.Next(150, 255));
+
             }
             else if (ball.Right >= game_panel.Right)
             {
                 speed_left = -speed_left;
+                Random random = new Random();
+                game_panel.BackColor = Color.FromArgb(random.Next(150, 255), random.Next(150, 255), random.Next(150, 255));
+
             }
             if (ball.Top <= game_panel.Top)
             {
                 speed_top = -speed_top;
+                Random random = new Random();
+                game_panel.BackColor = Color.FromArgb(random.Next(150, 255), random.Next(150, 255), random.Next(150, 255));
+
             }
             else if (ball.Bottom >= game_panel.Bottom)
             {
                 timer1.Enabled = false;
                 gameOver_panel.Visible = true;
                 gameOver_panel.Enabled = true;
+                Cursor.Show();
             }
 
-            if (ball.Bottom >= table.Bottom && ball.Left >= table.Left && ball.Right <= table.Right)
+            if (ball.Bottom >= table.Top && ball.Left >= table.Left && ball.Right <= table.Right)
             {
-                speed_left += 2;
-                speed_top += 2;
+                speed_left += 1;
+                speed_top += 1;
                 speed_top = -speed_top;
 
                 score++;
                 score_lbl.Text = score.ToString();
+
+                Random random = new Random();
+                game_panel.BackColor = Color.FromArgb(random.Next(150, 255), random.Next(150, 255), random.Next(150, 255));
             }
+        }
+        private void restart_btn_Click(object sender, EventArgs e)
+        {
+
+            gameOver_panel.Visible = false;
+            gameOver_panel.Enabled = false;
+            timer1.Enabled = true;
+            ball.Left = 50;
+            ball.Top = 65;
+            speed_left = 4;
+            speed_top = 4;
+            score = 0;
+            score_lbl.Text = score.ToString();
+            Cursor.Hide();
 
         }
 
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
 
+            DialogResult result = MessageBox.Show("Çýkmak istediðinize emin misiniz?", "Çýkýþ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
 
-
+        }
     }
 }

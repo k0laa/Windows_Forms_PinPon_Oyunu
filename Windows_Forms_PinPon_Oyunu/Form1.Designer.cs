@@ -111,6 +111,7 @@
             exit_btn.TabIndex = 4;
             exit_btn.Text = "Çıkış";
             exit_btn.UseVisualStyleBackColor = false;
+            exit_btn.Click += exit_btn_Click;
             // 
             // gameOver_lbl
             // 
@@ -132,6 +133,7 @@
             restart_btn.TabIndex = 2;
             restart_btn.Text = "Tekrar Oyna";
             restart_btn.UseVisualStyleBackColor = false;
+            restart_btn.Click += restart_btn_Click;
             // 
             // table
             // 
